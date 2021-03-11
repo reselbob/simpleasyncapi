@@ -1,0 +1,63 @@
+asyncapi: '2.0.0'
+info:
+  title: Wise Sayings API
+  version: '1.0.0'
+  description: |
+    An event driven application that delivers wise sayings to identified end points
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0'
+servers:
+  mosquitto:
+    url: mqtt://test.mosquitto.org
+    protocol: mqtt
+channels:
+  wisesaying:
+    subscribe:
+      operationId: onWiseSayingConsumed
+      message:
+       $ref: "#/components/messages/wiseSayingConsumed"
+    publish:
+      operationId: onWiseSayingPublished
+      message:
+       $ref: "#/components/messages/wiseSayingConsumed"
+components:
+  messages:
+    wiseSayingConsumed:
+      name: wiseSayingConsumed
+      title: Wise Saying Comsumed
+      summary: Fires when a wise saying is consumed
+      payload:
+        $ref: "#/components/schemas/wiseSayingPayload"
+    wiseSayingPublished:
+      name: wiseSayingPublished
+      title: Wise Saying Published
+      summary: Fires when a wise saying is published
+      payload:
+        $ref: "#/components/schemas/wiseSayingPayload"
+  schemas:
+    wiseSayingPayload:
+      title: WiseSayingPayload
+      description: The structure wisesaying payload
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the message
+        sender:
+          type: string
+          description: The sender of the wise saying
+        target:
+          type: string
+          description: The intended target of the wise saying
+        wisesaying:
+          type: string
+          description: The Wise Saying of interest
+        sentAt:
+          type: string
+          format: date-time
+          description: Date and time when the message was sent.
+
+      
+    
+
