@@ -11,9 +11,9 @@ A project that demonstrates the essential concepts of the Async API specificatio
 
 `git clone https://github.com/reselbob/simpleasyncapi.git`
 
-**SStep 3:**S Navigate to the working directory of the `gen` folder
+**Step 3:** Navigate to the working directory of the `gen` folder
 
-cd simpleasyncapi/gen
+`cd simpleasyncapi/gen`
 
 **Step 4:** Add the Node.js moduels
 
