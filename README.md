@@ -34,7 +34,16 @@ A project that demonstrates the essential concepts of the Async API specificatio
 **Step 8:** Start up Mosquitto
 
 `npm start`
+You get output as follows:
 
+```
+ SUB  Subscribed to wisesaying
+ PUB  Will eventually publish to wisesaying
+Wise Sayings API 1.0.0 is ready! 
+
+🔗  MQTT adapter is connected!
+
+```
 
 
 
