@@ -34,7 +34,8 @@ A project that demonstrates the essential concepts of the Async API specificatio
 **Step 8:** Start up Mosquitto
 
 `npm start`
-You get output as follows:
+
+You'll get output as follows:
 
 ```
  SUB  Subscribed to wisesaying
