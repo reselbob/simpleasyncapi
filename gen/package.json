@@ -1,0 +1,22 @@
+{
+  "name": "simpleasyncapi",
+  "version": "1.0.0",
+  "description": "A project that demonstrates how to use Async API",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reselbob/simpleasyncapi.git"
+  },
+  "author": "Bob Reselman <bob@CogArtTech.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/reselbob/simpleasyncapi/issues"
+  },
+  "homepage": "https://github.com/reselbob/simpleasyncapi#readme",
+  "dependencies": {
+    "@asyncapi/generator": "^1.5.0"
+  }
+}
