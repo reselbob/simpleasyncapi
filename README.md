@@ -23,6 +23,18 @@ A project that demonstrates the essential concepts of the Async API specificatio
 
 `node index.js`
 
+**Step 6:** Navigate to the generated `output` directory
+
+`cd ../output`
+
+**Step 7:** Add the Node.js packages
+
+`npm install`
+
+**Step 8:** Start up Mosquitto
+
+`npm start`
+
 
 
 
