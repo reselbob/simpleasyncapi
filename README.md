@@ -15,7 +15,7 @@ A project that demonstrates the essential concepts of the Async API specificatio
 
 `cd simpleasyncapi/gen`
 
-**Step 4:** Add the Node.js moduels
+**Step 4:** Add the Node.js packages
 
 `npm install`
 
