@@ -40,24 +40,46 @@ components:
       title: WiseSayingPayload
       description: The structure wisesaying payload
       type: object
+      additionalProperties: false
       properties:
         id:
           type: string
           description: The unique identifier of the message
+          example: 64371915-6834-45cd-a315-ae900b532e6b
         sender:
           type: string
           description: The sender of the wise saying
+          example: Donald Duck
         target:
-          type: string
           description: The intended target of the wise saying
+          type: object
+          additionalProperties: false
+          properties:
+            recipient:
+              description: The person or entity that is the the target of the wise saying
+              type: string
+              example: Daisy Duck
+            identifier:
+              type: string
+              description: A unique value that identifies the traget the endpoint of the carrierType
+              example: 210-223-7010
+            carrierType:
+              description: The carrier technology, domain or network
+              enum:
+                - SMS
+                - FACEBOOK
+                - LINKEDIN
+                - TWITTER
+                - EMAIL
+              default: SMS
         wisesaying:
           type: string
           description: The Wise Saying of interest
+          example: Alls well that ends well
         sentAt:
-          type: string
-          format: date-time
-          description: Date and time when the message was sent.
-
-      
-    
-
+            $ref: "#/components/schemas/sentAt"
+    sentAt:
+      type: string
+      format: date-time
+      description: Date and time when the message was sent.
+      example: 2021-03-12T17:23:12+00:00
