@@ -1,6 +1,8 @@
 # simpleasyncapi
 A project that demonstrates the essential concepts of the Async API specification
 
+# Autogenerate a MQTT broker for the Wise Sayings async API
+
 ## Run this code in a Katacoda Ubuntu playground
 
 **Step 1:** Go to
@@ -46,6 +48,32 @@ Wise Sayings API 1.0.0 is ready!
 
 ```
 
+# Install the MQTT command line tool
 
+`npm install mqtt -g`
 
+# Run the Subscriber to the Wise Sayings async API.
+
+`mqtt sub -t 'hello' -h 'test.mosquitto.org' -v`
+
+# Run the producer to the Wise Sayings async API.
+
+`mqtt pub -t 'hello' -h 'test.mosquitto.org' -m 'from MQTT.js'`
+
+**Sample message**
+
+```
+{
+  "id": "64371915-6834-45cd-a315-ae900b532e6b",
+  "sender": "Donald Duck",
+  "target": {
+    "recipient": "Daisy Duck",
+    "identifier": "210-223-7010",
+    "carrierType": "SMS"
+  },
+  "wisesaying": "Alls well that ends well",
+  "sentAt": "2021-03-12T17:23:12.000Z"
+}
+
+```
 

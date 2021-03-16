@@ -12,40 +12,51 @@ servers:
     url: mqtt://test.mosquitto.org
     protocol: mqtt
 channels:
-  wisesaying:
+  wisesayingNeeded:
     subscribe:
-      operationId: onWiseSayingConsumed
+      operationId: onWiseSayingNeededSub
       message:
-       $ref: "#/components/messages/wiseSayingConsumed"
+        $ref: "#/components/messages/wiseSayingNeeded"
     publish:
-      operationId: onWiseSayingPublished
+      operationId: onWiseSayingNeededPub
       message:
-       $ref: "#/components/messages/wiseSayingConsumed"
+       $ref: "#/components/messages/wiseSayingNeeded"
+  wisesayingSent:
+    subscribe:
+      operationId: onWiseSayingSentSub
+      message:
+       $ref: "#/components/messages/wiseSayingSent"
+    publish:
+      operationId: onWiseSayingSentPub
+      message:
+       $ref: "#/components/messages/wiseSayingSent"
 components:
   messages:
-    wiseSayingConsumed:
+    wiseSayingNeeded:
+      name: wiseSayingNeeded
+      title: Wise Saying Needed
+      summary: Fires when a wise saying is needed
+      payload:
+        $ref: "#/components/schemas/wiseSayingNeededPayload"
+    wiseSayingSent:
       name: wiseSayingConsumed
       title: Wise Saying Comsumed
       summary: Fires when a wise saying is consumed
       payload:
-        $ref: "#/components/schemas/wiseSayingPayload"
-    wiseSayingPublished:
-      name: wiseSayingPublished
-      title: Wise Saying Published
-      summary: Fires when a wise saying is published
-      payload:
-        $ref: "#/components/schemas/wiseSayingPayload"
+        $ref: "#/components/schemas/wiseSayingSentPayload"
   schemas:
-    wiseSayingPayload:
-      title: WiseSayingPayload
-      description: The structure wisesaying payload
+    wiseSayingNeededPayload:
+      title: wiseSayingNeededPayload
+      description: The structure of the wisesaying needed payload
       type: object
-      additionalProperties: false
+      additionalProperties: false   
       properties:
         id:
           type: string
           description: The unique identifier of the message
           example: 64371915-6834-45cd-a315-ae900b532e6b
+        sentAt:
+           $ref: "#/components/schemas/sentAt"
         sender:
           type: string
           description: The sender of the wise saying
@@ -56,12 +67,12 @@ components:
           additionalProperties: false
           properties:
             recipient:
-              description: The person or entity that is the the target of the wise saying
+              description: The person or entity that is the target of the wise saying
               type: string
               example: Daisy Duck
             identifier:
               type: string
-              description: A unique value that identifies the traget the endpoint of the carrierType
+              description: A unique value that identifies the target at the endpoint or the carrier type
               example: 210-223-7010
             carrierType:
               description: The carrier technology, domain or network
@@ -72,11 +83,21 @@ components:
                 - TWITTER
                 - EMAIL
               default: SMS
-        wisesaying:
-          type: string
-          description: The Wise Saying of interest
-          example: Alls well that ends well
-        sentAt:
+    wiseSayingSentPayload:
+      title: WiseSayingPayload
+      description: The structure of wisesaying sent payload
+      additionalProperties: false
+      allOf:
+      - $ref: '#/components/schemas/wiseSayingNeededPayload'
+      - type: object
+        required:
+          - wisesaying
+        properties:
+          wisesaying:
+            type: string
+            description: The Wise Saying of interest
+            example: A stitch in time saves nine
+          deliveredAt:
             $ref: "#/components/schemas/sentAt"
     sentAt:
       type: string

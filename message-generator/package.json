@@ -1,0 +1,16 @@
+{
+  "name": "message-generator",
+  "version": "1.0.0",
+  "description": "A utility that will generate a WiseSaying message with random values",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Bob Reselman <bob@CogArtTech.com>",
+  "license": "MIT",
+  "dependencies": {
+    "faker": "^5.4.0",
+    "mqtt": "^4.2.6",
+    "uuid": "^8.3.2"
+  }
+}

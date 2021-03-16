@@ -2,6 +2,8 @@ gen/output
 app
 Output
 
+.idea/
+
 # Logs
 logs
 *.log
