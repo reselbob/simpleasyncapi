@@ -5,6 +5,6 @@ generator.templateParams = {baseHref:"./"};
 generator
     .generateFromURL('https://raw.githubusercontent.com/reselbob/simpleasyncapi/main/gen/asyncapi.yaml')
     .then(() => {
-        console.log('Done!');
+        console.log('genFromUrlToHtml is done!');
     })
     .catch(console.error);

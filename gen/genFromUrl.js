@@ -5,6 +5,6 @@ generator.templateParams = {server:"mosquitto"};
 generator
     .generateFromURL('https://raw.githubusercontent.com/reselbob/simpleasyncapi/main/gen/asyncapi.yaml')
     .then(() => {
-        console.log('Done!');
+        console.log('genfromURL is done!');
     })
     .catch(console.error);

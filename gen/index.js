@@ -5,7 +5,7 @@ generator.templateParams = {server:"mosquitto"};
     generator
   .generateFromFile('asyncapi.yaml')
   .then(() => {
-    console.log('Done!');
+    console.log('Generate from asyncapi.yaml Done!');
   })
   .catch(console.error);
 
