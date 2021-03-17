@@ -1,5 +1,5 @@
 # simpleasyncapi
-A project that demonstrates the essential concepts of the Async API specification. To view the project'ss specification in the Async API Playground go [here](https://playground.asyncapi.io/?load=https://raw.githubusercontent.com/reselbob/simpleasyncapi/main/gen/asyncapi.yaml).
+A project that demonstrates the essential concepts of the Async API specification. To view the project's specification in the Async API Playground go [here](https://playground.asyncapi.io/?load=https://raw.githubusercontent.com/reselbob/simpleasyncapi/main/gen/asyncapi.yaml).
 
 # Autogenerate a MQTT broker for the Wise Sayings async API
 
