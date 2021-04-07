@@ -1,0 +1,106 @@
+asyncapi: '2.0.0'
+info:
+  title: Wise Sayings API
+  version: '1.0.0'
+  description: |
+    An event driven application that delivers wise sayings to identified end points
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0'
+servers:
+  mosquitto:
+    url: mqtt://test.mosquitto.org
+    protocol: mqtt
+channels:
+  wisesayingNeeded:
+    subscribe:
+      operationId: onWiseSayingNeededSub
+      message:
+        $ref: "#/components/messages/wiseSayingNeeded"
+    publish:
+      operationId: onWiseSayingNeededPub
+      message:
+       $ref: "#/components/messages/wiseSayingNeeded"
+  wisesayingSent:
+    subscribe:
+      operationId: onWiseSayingSentSub
+      message:
+       $ref: "#/components/messages/wiseSayingSent"
+    publish:
+      operationId: onWiseSayingSentPub
+      message:
+       $ref: "#/components/messages/wiseSayingSent"
+components:
+  messages:
+    wiseSayingNeeded:
+      name: wiseSayingNeeded
+      title: Wise Saying Needed
+      summary: Fires when a wise saying is needed
+      payload:
+        $ref: "#/components/schemas/wiseSayingNeededPayload"
+    wiseSayingSent:
+      name: wiseSayingConsumed
+      title: Wise Saying Comsumed
+      summary: Fires when a wise saying is consumed
+      payload:
+        $ref: "#/components/schemas/wiseSayingSentPayload"
+  schemas:
+    wiseSayingNeededPayload:
+      title: wiseSayingNeededPayload
+      description: The structure of the wisesaying needed payload
+      type: object
+      additionalProperties: false   
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the message
+          example: 64371915-6834-45cd-a315-ae900b532e6b
+        sentAt:
+           $ref: "#/components/schemas/sentAt"
+        sender:
+          type: string
+          description: The sender of the wise saying
+          example: Donald Duck
+        target:
+          description: The intended target of the wise saying
+          type: object
+          additionalProperties: false
+          properties:
+            recipient:
+              description: The person or entity that is the target of the wise saying
+              type: string
+              example: Daisy Duck
+            identifier:
+              type: string
+              description: A unique value that identifies the target at the endpoint or the carrier type
+              example: 210-223-7010
+            carrierType:
+              description: The carrier technology, domain or network
+              enum:
+                - SMS
+                - FACEBOOK
+                - LINKEDIN
+                - TWITTER
+                - EMAIL
+              default: SMS
+    wiseSayingSentPayload:
+      title: WiseSayingPayload
+      description: The structure of wisesaying sent payload
+      additionalProperties: false
+      allOf:
+      - $ref: '#/components/schemas/wiseSayingNeededPayload'
+      - type: object
+        required:
+          - wisesaying
+        properties:
+          wisesaying:
+            type: string
+            description: The Wise Saying of interest
+            example: A stitch in time saves nine
+          deliveredAt:
+            $ref: "#/components/schemas/sentAt"
+    sentAt:
+      type: string
+      format: date-time
+      description: Date and time when the message was sent.
+      example: 2021-03-12T17:23:12+00:00
