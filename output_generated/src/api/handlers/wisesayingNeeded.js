@@ -14,7 +14,7 @@ const handler = module.exports = {};
  * @param {string} [options.message.payload.target.carrierType=&#39;SMS&#39;] - The carrier technology, domain or network
  */
 handler.onWiseSayingNeededPub = async ({message}) => {
-  console.log({firingOnWiseSayingNeededPub : message.payload});
+  console.log({firingFromWithinOnWiseSayingNeededPub : message.payload});
 };
 /**
  *
@@ -29,6 +29,6 @@ handler.onWiseSayingNeededPub = async ({message}) => {
  * @param {string} [options.message.payload.target.carrierType=&#39;SMS&#39;] - The carrier technology, domain or network
  */
 handler.onWiseSayingNeededSub = async ({message}) => {
-  console.log({firingOnWiseSayingNeededSub : message.payload});
+  console.log({firingFromWithinOnWiseSayingNeededSub : message.payload});
   message.hermes.send('Hi from onWiseSayingNeededSub',message.headers, 'wisesayingSent');
 };

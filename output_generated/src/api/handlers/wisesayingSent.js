@@ -7,7 +7,7 @@ const handler = module.exports = {};
  * @param {object} options.message
  */
 handler.onWiseSayingSentPub = async ({message}) => {
-  console.log({firingOnWiseSayingSentPub : message});
+  console.log({firingFromWithinOnWiseSayingSentPub : message});
 };
 /**
  *
@@ -15,5 +15,5 @@ handler.onWiseSayingSentPub = async ({message}) => {
  * @param {object} options.message
  */
 handler.onWiseSayingSentSub = async ({message}) => {
-  console.log({firingOnWiseSayingSentSub : message});
+  console.log({firingFromWithinOnWiseSayingSentSub : message});
 };
